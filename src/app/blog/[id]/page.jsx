@@ -6,28 +6,21 @@ import { notFound } from "next/navigation";
 
 
 async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`https://localhost:3000/api/posts/${id}`, {
     method: "GET",
     headers: {
       accept: "application/json",
     },
     cache: "no-store",
   });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
- 
-  // Recommendation: handle errors
+
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     return notFound()
   }
  
   return res.json();
 }
 
-
-
-// Dynamic metadata
 export async function generateMetadata({ params }) {
   const post = await getData(params.id);
   return {
@@ -35,8 +28,6 @@ export async function generateMetadata({ params }) {
     description: post.desc,
   };
 }
-
-
 
 
 const BlogPost = async ({ params }) => {
