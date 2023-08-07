@@ -5,26 +5,21 @@ import Image from "next/image";
 
 //FETCHING DATA
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
+  const res = await fetch("https://localhost:3000/api/posts", {
     method: "GET",
     headers: {
       accept: "application/json",
     },
     cache: "no-store",
   });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
 
-  // Recommendation: handle errors
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
 
   return res.json();
 }
 
-//A BLOG PAGE FOR OUTPUT (MAPPING) DATA
 const Blog = async () => {
   const data = await getData();
   return (
