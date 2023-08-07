@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: ["images.pexels.com"],
+  },
     async headers() {
     return [
       {
@@ -16,7 +17,6 @@ const nextConfig = {
       }
     ]
   }
-  },
 };
 
 module.exports = nextConfig;
