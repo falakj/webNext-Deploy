@@ -5,7 +5,13 @@ import Image from "next/image";
 
 //FETCHING DATA
 async function getData() {
-  const res = await fetch("https://localhost:3000/api/posts", {
+  
+    const apiEndpoint = process.env.NEXT_PUBLIC_API_URL || ''; // Define your API URL environment variable
+  if (!apiEndpoint) {
+    throw new Error('API URL is not defined');
+  }
+  
+  const res = await fetch(`${apiEndpoint}/api/posts`, { 
     method: "GET",
     headers: {
       accept: "application/json",
