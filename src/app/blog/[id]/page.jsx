@@ -6,7 +6,12 @@ import { notFound } from "next/navigation";
 
 
 async function getData(id) {
-  const res = await fetch(`https://localhost:3000/api/posts/${id}`, {
+  const apiEndpoint = process.env.NEXT_PUBLIC_API_URL || '';
+    if (!apiEndpoint) {
+    throw new Error('API URL is not defined');
+  }
+  
+ const res = await fetch(`${apiEndpoint}/api/posts/${id}`, {
     method: "GET",
     headers: {
       accept: "application/json",
