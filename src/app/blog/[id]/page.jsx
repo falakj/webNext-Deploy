@@ -3,15 +3,8 @@ import styles from "./page.module.css";
 import Image from 'next/image';
 import { notFound } from "next/navigation";
 
-
-
 async function getData(id) {
-  const apiEndpoint = process.env.NEXT_PUBLIC_API_URL || '';
-    if (!apiEndpoint) {
-    throw new Error('API URL is not defined');
-  }
-  
- const res = await fetch(`${apiEndpoint}/api/posts/${id}`, {
+  const res = await fetch(`https://falakz-webnex-deploy.vercel.app/api/posts/${id}`, {
     method: "GET",
     headers: {
       accept: "application/json",
