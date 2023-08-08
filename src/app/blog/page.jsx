@@ -20,19 +20,6 @@ async function getData() {
   }
 
   return res.json();
-}/api/posts", {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-    },
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
 }
 
 //A BLOG PAGE FOR OUTPUT (MAPPING) DATA
